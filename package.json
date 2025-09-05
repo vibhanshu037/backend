@@ -1,1 +1,49 @@
-{"name": "bearull-admin-panel", "version": "1.0.0", "description": "Admin Panel for Bearull project", "main": "index.js", "scripts": {"start": "node index.js", "dev": "nodemon index.js", "admin-app": "node admin-app.js", "client-app": "node client-app.js"}, "dependencies": {"express": "^4.x.x", "mongoose": "^6.x.x", "bcryptjs": "^2.x.x", "jsonwebtoken": "^8.x.x", "ejs": "^3.x.x", "helmet": "^5.x.x", "cors": "^2.x.x", "dotenv": "^10.x.x"}, "devDependencies": {"nodemon": "^2.x.x"}, "author": "Your Name", "license": "ISC"}
+{
+  "name": "video-conferencing-platform",
+  "version": "1.0.0",
+  "description": "Complete video conferencing platform with microservices architecture",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "start:gateway": "node services/api-gateway/server.js",
+    "start:media": "node services/media-server/server.js",
+    "start:chat": "node services/chat-service/server.js",
+    "start:user": "node services/user-service/server.js",
+    "start:recording": "node services/recording-service/server.js",
+    "start:notification": "node services/notification-service/server.js",
+    "start:file": "node services/file-service/server.js",
+    "start:all": "concurrently \"npm run start:gateway\" \"npm run start:media\" \"npm run start:chat\" \"npm run start:user\" \"npm run start:recording\" \"npm run start:notification\" \"npm run start:file\""
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.12.0",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.5.1",
+    "ejs": "^3.1.9",
+    "helmet": "^5.1.1",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "socket.io": "^4.7.2",
+    "redis": "^4.6.7",
+    "multer": "^1.4.4",
+    "uuid": "^9.0.0",
+    "winston": "^3.10.0",
+    "joi": "^17.9.2",
+    "express-rate-limit": "^6.8.1",
+    "compression": "^1.7.4",
+    "node-cron": "^3.0.2",
+    "http-proxy-middleware": "^2.0.6",
+    "express-validator": "^7.0.1",
+    "express-session": "^1.17.3",
+    "connect-redis": "^7.1.0",
+    "nodemailer": "^6.9.4",
+    "sharp": "^0.32.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "concurrently": "^8.2.0"
+  },
+  "author": "Video Conferencing Team",
+  "license": "ISC"
+}
