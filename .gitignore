@@ -100,3 +100,22 @@ temp/
 
 # Redis dump
 dump.rdb
+
+# SSL certificates
+ssl/
+*.pem
+*.key
+*.crt
+
+# Docker volumes
+docker-data/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test files
+test-results/
+coverage/
