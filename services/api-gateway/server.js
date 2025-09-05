@@ -179,8 +179,13 @@ const PORT = config.ports.apiGateway;
 
 const startServer = async () => {
   try {
-    // Connect to Redis for rate limiting and caching
-    await redisClient.connect();
+    // Try to connect to Redis for rate limiting and caching (optional in development)
+    try {
+      await redisClient.connect();
+      logger.info('Redis connected for API Gateway');
+    } catch (redisError) {
+      logger.warn('Redis not available, continuing without caching:', redisError.message);
+    }
     
     const server = app.listen(PORT, () => {
       logger.info(`API Gateway running on http://localhost:${PORT}`);
@@ -192,7 +197,9 @@ const startServer = async () => {
     const gracefulShutdown = () => {
       logger.info('Shutting down API Gateway...');
       server.close(async () => {
-        await redisClient.disconnect();
+        if (redisClient.isClientConnected()) {
+          await redisClient.disconnect();
+        }
         process.exit(0);
       });
     };
